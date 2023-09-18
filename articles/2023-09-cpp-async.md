@@ -10,7 +10,7 @@ published: false
 
 `std::thread`か`std::async`を使えばいいっぽい。
 
-## 例えばこんなクラス
+## 例えばこんな、ループするメンバ関数を持つクラス
 
 ```cpp loop.hop
 class Loop {
