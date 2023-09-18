@@ -13,8 +13,6 @@ published: false
 ## 例えばこんなクラス
 
 ```cpp loop.hop
-#pragma once
-
 class Loop {
  public:
   void StartLoop();
@@ -47,9 +45,8 @@ Loop::StopLoop() {
 
 int main() {
   Loop loop;
-  loop.StartLoop();
-  // ブロッキング発生！無限ループとなり、以降の処理は実行されない
-  std::thread::sleepfor(std::chrono::seconds(5));
+  loop.StartLoop(); // ブロッキング発生！無限ループとなり、以降の処理は実行されない
+  std::this_thread::sleepfor(std::chrono::seconds(5));
   loop.StopLoop();
 }
 ```
@@ -59,12 +56,14 @@ int main() {
 ## 並列処理
 
 ```cpp main.cpp
+#include "loop.hpp"
+
 int main() {
   auto loop = std::make_shared<Loop>();
   std::thread([&]() {
    loop->StartLoop();
   }).detach(); // fire and forget 的に非同期処理を実行
-  std::thread::sleepfor(std::chrono::seconds(5));
+  std::this_thread::sleep_for(std::chrono::seconds(5));
   loop->StopLoop();
 }
 ```
