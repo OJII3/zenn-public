@@ -74,7 +74,25 @@ int main() {
 
 別スレッドでエラーが起きた時に、メインスレッドでその処理をしたい。
 
+```cpp main.cpp
+#include "loop.hpp"
 
+int main() {
+  auto loop = std::make_shared<Loop>();
+  std::exception_ptr eptr;
+  auto th = std::thread([&]() {
+   loop->StartLoop(&eptr);
+  });
+  
+  std::this_thread::sleep_for(std::chrono::seconds(5));
+
+  th.join();
+  if (eptr) {
+    throw std::rethrow_exception(eptr);
+  }
+  loop->StopLoop();
+}
+```
 
 
 
