@@ -19,7 +19,7 @@ class Loop {
  public:
   void StartLoop();
   void StopLoop();
- private
+ private:
   bool is_running_ = false;
 };
 ```
