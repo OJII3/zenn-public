@@ -12,7 +12,7 @@ published: false
 
 ## 例えばこんなクラス
 
-```cpp: loop.hpp
+```cpp loop.hop
 #pragma once
 
 class Loop {
@@ -23,8 +23,8 @@ class Loop {
   bool is_running_ = false;
 };
 ```
-```cpp: loop.cpp
-#include "loop.hop
+```cpp loop.cpp
+#include "loop.hpp"
 
 Loop::StartLoop() {
   is_running = true
@@ -42,7 +42,7 @@ Loop::StopLoop() {
 
 ## ふつうに書く
 
-```cpp: main.cpp
+```cpp main.cpp
 #include "loop.hpp"
 
 int main() {
@@ -58,7 +58,7 @@ int main() {
 
 ## 並列処理
 
-```cpp: main.cpp
+```cpp main.cpp
 int main() {
   auto loop = std::make_shared<Loop>();
   std::thread([&]() {
