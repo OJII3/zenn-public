@@ -3,8 +3,8 @@ title: "タイル型WMerがXubuntuを使うなら？"
 emoji: "👋"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: [linux, xubuntu]
-published: false
---
+published: true
+---
 
 # Ubuntu が必要になった
 
