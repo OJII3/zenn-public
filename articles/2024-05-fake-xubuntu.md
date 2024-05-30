@@ -78,4 +78,4 @@ include ~/.config/i3/`hostnamectl hostname`.i3
 
 https://GitHub.com/ojii3/dotfiles
 
-Xfce 使ってないけど OS は Xubuntu なのでタイトル詐欺ではないです。異論は認めます。
+OS は Xubuntu のままなのでタイトル詐欺ではないです()
