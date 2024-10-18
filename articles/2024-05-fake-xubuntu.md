@@ -1,10 +1,12 @@
 ---
-title: "タイル型WMerがXubuntuを使うなら？"
+title: "Xubuntuのアイデンティティを消し去ってカスタマイズした話"
 emoji: "👋"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: [linux, xubuntu]
 published: true
 ---
+
+どうでもいいことをつらつらと書いております
 
 # Ubuntu が必要になった
 
