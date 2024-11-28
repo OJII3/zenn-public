@@ -51,6 +51,27 @@ return {
 
 Kitty のない環境でも同じ設定ファイルを使えるように工夫しています。
 
+画像を扱うためのAPIが用意されており、以下のように位置を指定して使うことができます。
+
+```lua
+local api = require("image")
+                        local image = api.from_file("/path-to-image.png", {
+                                x = math.floor(vim.api.nvim_win_get_width(0) / 2 - 50),
+                                y = 10,
+                                width = 100,
+                        })
+```
+
+このようにして読み込んだ画像を
+
+
+```lua
+image:show()
+image:clear()
+```
+
+のようにして簡単に表示非表示を切り替えられます。
+
 次に、起動画面をカスタマイズする設定です。**Alpha.nvim** を併用しています。
 
 **image.nvim** はAPIを提供しているので、任意のタイミングで任意の場所に画像を出すことができます。
