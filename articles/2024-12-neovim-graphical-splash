@@ -33,3 +33,5 @@ Neovim が起動したときの画面をグラフィカルにしてかっこよ�
 詳細は以下のページをご覧ください [3rd/image.nvim](https://github.com/3rd/image.nvim) 
 
 # カスタマイズ
+
+プラグインマネージャーには **Lazy.nvim** を
