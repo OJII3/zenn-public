@@ -36,33 +36,28 @@ Neovim が起動したときの画面をグラフィカルにしてかっこよ�
 
 プラグインマネージャーには **Lazy.nvim** を使用しています。
 
+## Image.nvim
+
 まずは Neovim で画像を表示するプラグイン **3rd/image.nvim** の導入です。
 
-```lua title="~/.config/nvim/lua/plugins/image.lua"
-return {
-        "3rd/image.nvim",
-        enabled = os.getenv("TERM") == "xterm-kitty",
-        dependencies = {
-                { "MunifTanjim/nui.nvim" },
-        },
-  lazy = false,
-}
+Kitty 以外の環境でも同じ設定ファイルを使いたいので、以下の式を使い、このプラグインの有効・無効を自動で切り替えるようにします。
+
+```lua
+os.getenv("TERM") == "xterm-kitty" // kitty であれば true
 ```
 
-Kitty のない環境でも同じ設定ファイルを使えるように工夫しています。
-
-画像を扱うためのAPIが用意されており、以下のように位置を指定して使うことができます。
+Image.nvim には画像を扱うためのAPIが用意されており、以下のように位置を指定して使うことができます。
 
 ```lua
 local api = require("image")
                         local image = api.from_file("/path-to-image.png", {
-                                x = math.floor(vim.api.nvim_win_get_width(0) / 2 - 50),
+                                x = math.floor(vim.api.nvim_win_get_width(0) / 2 - 50), // 中央に配置
                                 y = 10,
                                 width = 100,
                         })
 ```
 
-このようにして読み込んだ画像を
+このようにして画像を読み込んで
 
 
 ```lua
@@ -71,6 +66,8 @@ image:clear()
 ```
 
 のようにして簡単に表示非表示を切り替えられます。
+
+## Alpha.nvim
 
 次に、起動画面をカスタマイズする設定です。**Alpha.nvim** を併用しています。
 
