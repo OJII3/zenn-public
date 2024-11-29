@@ -43,7 +43,7 @@ Neovim が起動したときの画面をグラフィカルにしてかっこよ�
 Kitty 以外の環境でも同じ設定ファイルを使いたいので、以下の式を使い、このプラグインの有効・無効を自動で切り替えるようにします。
 
 ```lua
-os.getenv("TERM") == "xterm-kitty" // kitty であれば true
+os.getenv("TERM") == "xterm-kitty" -- kitty であれば true
 ```
 
 Image.nvim には画像を扱うためのAPIが用意されており、以下のように位置を指定して使うことができます。
@@ -73,7 +73,24 @@ image:clear()
 
 **image.nvim** はAPIを提供しているので、任意のタイミングで任意の場所に画像を出すことができます。
 
-**Alpha.nvim** 起動時の Autocmd で画像表示を行い、`BufEnter` の Autocmd で画像をクリアします。画像は Neovim のバッファに表示されているというより、ターミナルに表示されている状態なので、正しく画像をクリアしないと他のバッファが重なって大変見づらくなってしまうので注意か必要です。
+**Alpha.nvim** 起動時の Autocmd で画像表示を行い、`BufEnter` の Autocmd で画像をクリアします。`AlphaClosed` という Autocmd もあるのですが、こちらだとバッファをフロートで開いたときには発火しないようで、重なって見づらくなってしまうので使用しませんでした。
+
+```lua
+local image = ...
+...
+
+vim.api.nvim_create_autocmd({ "User" }, {
+                                        callback = function()
+                                                image:render()
+                                        end,
+                                        pattern = "AlphaReady",
+                                })
+
+                                vim.api.nvim_create_autocmd({ "BufEnter" }, {
+                                        callback = function()
+                                                image:clear()
+                                        end,
+```
 
 先程と同様、Kitty がある時とないときで処理を分岐させています。
 
