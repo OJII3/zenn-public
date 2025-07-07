@@ -3,7 +3,7 @@ title: "Xubuntuのアイデンティティを消し去ってカスタマイズ�
 emoji: "👋"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: [linux, xubuntu]
-published: true
+published: false
 ---
 
 どうでもいいことをつらつらと書いております
